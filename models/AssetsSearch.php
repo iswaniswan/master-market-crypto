@@ -62,11 +62,11 @@ class AssetsSearch extends Assets
             ->andFilterWhere(['like', 'explorer', $this->explorer]);
 
         if ($this->top5 != null and $this->top5 == true) {
-            $query->andWhere('CAST(rank, SIGNED) <= 5');
+            $query->andWhere('CONVERT(rank, SIGNED) <= "5"');
         }
 
         if ($this->top20 != null and $this->top20 == true) {
-            $query->andWhere('CAST(rank, SIGNED) <= 20');
+            $query->andWhere('CONVERT(rank, SIGNED) <= "20"');
         }
 
 //         $command = $query->createCommand()->getRawSql();
