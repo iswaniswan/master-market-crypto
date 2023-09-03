@@ -1,0 +1,42 @@
+.dataTables_wrapper .dt-buttons.btn-group {
+    margin-top: -8px;
+    display: none;
+}
+
+table.dataTable tbody tr td a i {
+    font-size: 16px;
+    margin: 0px 0px;
+}
+
+.dataTables_info {
+    float: left ;
+}
+
+.dt-button-wrapper {
+    margin-bottom: 1rem;
+    text-align:left;
+}
+
+.dt-button-wrapper .dropdown-menu {
+    position: absolute;
+    will-change: transform;
+    top: 0px;
+    left: 0px;
+    transform: translate3d(0px, 38px, 0px);
+}
+
+.dataTables_info {
+    padding-top: 1rem !important;
+}
+
+.dataTables_paginate {
+    margin-bottom: 0.5rem !important;
+}
+
+.dataTables_paginate .pagination {
+    padding: 5px 0px;
+}
+
+table.dataTable thead tr th {
+    border-top: unset !important;
+}
