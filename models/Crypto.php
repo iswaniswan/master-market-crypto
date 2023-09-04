@@ -77,8 +77,15 @@ class Crypto extends \yii\db\ActiveRecord
     {
         $urlImage = Yii::getAlias('@web').'/images/default-currency.png';
 
+        $filename = strtolower($this->symbol) . "@2x.png";
+        $filePath = Yii::getAlias('@webroot') . '/images/' . $filename;
+
+        if (file_exists($filePath)) {
+            $urlImage = Yii::getAlias('@web') . '/images/' . $filename;
+        }
+
         $html = <<<HTML
-            <img src="{$urlImage}" class="rounded-circle">
+            <img src="{$urlImage}" class="rounded-circle border-purple" style="width: 36px;">
         HTML;
 
         return $html;

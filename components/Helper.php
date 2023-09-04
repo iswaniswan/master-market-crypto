@@ -26,6 +26,27 @@ class Helper {
         return "TRX$y$m$d$h$i$s";
     }
 
+    public static function getSimpleTermEn($number)
+    {
+        $suffix = '';
+        if ($number >= 1000000000) {
+            $number = round($number / 1000000000, 50);
+            $suffix = 'B';
+        }
+
+        if ($number >= 1000000) {
+            $number = round($number / 1000000, 1);
+            $suffix = 'M';
+        }
+
+        if ($number >= 1000) {
+            $number = round($number / 1000, 1);
+            $suffix = 'K';
+        }
+
+        return number_format($number, 2, ".", ",") . $suffix;
+    }
+
 }
 
 

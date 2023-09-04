@@ -24,7 +24,7 @@
 //$unix_timestamp = $datetime->getTimestamp();
 //$end = $unix_timestamp *1000;
 
-$urlDataChart = "https://api.coincap.io/v2/assets/{$model->assets->asset_id}/history?interval=d1";
+$urlDataChart = "https://api.coincap.io/v2/assets/{$model->assets->asset_id}/history?interval=h1";
 $script = <<<JS
 
     function getChart() {
@@ -46,7 +46,7 @@ $script = <<<JS
         
         myPromise.then(
             function(value) {
-                console.log(value);                
+                // console.log(value);                
                 const currentDate = new Date();
                 
                 const data = value?.data;                
@@ -79,6 +79,15 @@ $script = <<<JS
         
                 // Configuration options
                 const chartOptions = {
+                    hover: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    elements: {
+                        point:{
+                            radius: 0
+                        }
+                    },
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
@@ -91,7 +100,39 @@ $script = <<<JS
                             gridLines: {
                                 display:true
                             }   
-                        }]
+                        }],
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'hour', // Display unit as 'hour'
+                                displayFormats: {
+                                    hour: 'YYYY-MM-DD HH:mm' // Format for labels
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Date and Time'
+                            }
+                        },
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Price'
+                            }
+                        }
+                    },
+                    tooltips: {                        
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                const _label = ' $' + parseFloat(tooltipItem.value).toLocaleString("en", {
+                                    maximumFractionDigits: 2
+                                });
+                                return _label;
+                            }
+                        }
                     }
                 };
         
@@ -111,10 +152,6 @@ $script = <<<JS
 
     $(document).ready(function() {
         getChart();
-        
-        
-        
-        
     })
     
 JS;

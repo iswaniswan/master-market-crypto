@@ -8,6 +8,7 @@
 namespace app\commands;
 
 use app\components\Helper;
+use app\models\Assets;
 use app\models\Deposit;
 use app\models\Downline;
 use app\models\FundActive;
@@ -184,6 +185,42 @@ class HelloController extends Controller
         }
 
         echo 'success';
+
+    }
+
+    private function grab_image($url,$saveto){
+        $ch = curl_init ($url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+        $raw=curl_exec($ch);
+        curl_close ($ch);
+        if(file_exists($saveto)){
+            unlink($saveto);
+        }
+        $fp = fopen($saveto,'x');
+        fwrite($fp, $raw);
+        fclose($fp);
+    }
+
+    public function actionGrabCoincapThumbnail()
+    {
+        $prefix = '@2x.png';
+
+        $url = 'https://assets.coincap.io/assets/icons/';
+        $saveDir =  Yii::getAlias('@app') . '\web\images\\';
+
+        $allAssets = Assets::find();
+        /**@var $asset \app\models\Assets*/
+        foreach ($allAssets->all() as $asset) {
+            $symbol = strtolower($asset->symbol);
+            $_url = $url . $symbol . $prefix;
+            $_saveDir = $saveDir . $symbol . $prefix;
+
+            $this->grab_image($_url, $_saveDir);
+        }
+
+        echo 'done';
 
     }
 

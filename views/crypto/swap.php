@@ -1,5 +1,6 @@
 <?php
 
+use app\components\Helper;
 use app\components\Mode;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -32,19 +33,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container-fluid">
         <div class="card-box">
             <div class="card-body row">
-                <div class="col-2 text-center badge badge-pink m-1">
-                    <h6 class="text-white">#RANK <?= $model->assets->rank ?></h6>
+                <div class="col-2 text-center">
+                    <img src="<?= $model->assets->getImageUrl() ?>" class="mx-auto" style="width: 48px; display: block; margin-bottom: .5rem">
+                    <span>#RANK <?= $model->assets->rank ?></span>
                 </div>
-                <div class="col-3 text-center badge badge-success m-1">
-                    <h6 class="text-white">Market Cap $<?= number_format($model->assets->market_cap_usd, 0, ".", ",")  ?></h6>
+                <div class="col-3 text-center">
+                    <span class="">Market Cap</span>
+                    <h6>$<?= Helper::getSimpleTermEn($model->assets->market_cap_usd) ?></h6>
                 </div>
-                <div class="col-3 text-center badge badge-info m-1">
-                    <h6 class="text-white">Volume (24Hr) <?= number_format($model->assets->vwap_24_hr, 0, ".", ",")  ?></h6>
+                <div class="col-3 text-center">
+                    <span class="">Volume (24Hr)</span>
+                    <h6>$<?= Helper::getSimpleTermEn($model->assets->vwap_24_hr) ?></h6>
                 </div>
-                <div class="col-3 text-center badge badge-warning m-1">
-                    <h6 class="text-white">Supply <?= number_format($model->assets->supply, 0, ".", ",")  ?>
-                        <?= $model->assets->symbol ?>
-                    </h6>
+                <div class="col-3 text-center">
+                    <span class="">Supply</span>
+                    <h6><?= Helper::getSimpleTermEn($model->assets->supply) ?> <?= $model->assets->symbol ?></h6>
                 </div>
             </div>
         </div>
