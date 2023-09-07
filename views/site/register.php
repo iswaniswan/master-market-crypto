@@ -37,8 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="col-12 p-4">
                 <div class="row text-center">
-                    <a href="#" class="col">
+                    <a href="#" class="col logo logo-dark">
                         <img src="<?= Yii::getAlias('@web').'/images/app-logo.png' ?>" style="width:70%; max-height:70px; object-fit:scale-down">
+                    </a>
+                    <a href="#" class="col logo logo-light">
+                        <img src="<?= Yii::getAlias('@web').'/images/app-logo-dark.png' ?>" style="width:70%; max-height:70px; object-fit:scale-down">
                     </a>
                 </div>
             </div>
