@@ -80,13 +80,13 @@ use yii\web\View;
     <div class="logo-box">
         <a href="<?= Url::to(['/dashboard']) ?>" class="logo text-center logo-light">
             <span class="logo-lg" style="">
-                <img src="<?= Yii::getAlias('@web').'/images/LOGO.png' ?>" style="width:80%; max-height:64px; object-fit:scale-down">
+                <img src="<?= Yii::getAlias('@web').'/images/app-logo-dark.png' ?>" style="width:80%; max-height:64px; object-fit:scale-down">
                 <!-- <span class="logo-lg-text-dark">Uplon</span> -->
             </span>
         </a>
         <a href="<?= Url::to(['/dashboard']) ?>" class="logo text-center logo-dark">
             <span class="logo-lg" style="">
-                <img src="<?= Yii::getAlias('@web').'/images/LOGO.png' ?>" style="width:80%; max-height:64px; object-fit:scale-down">
+                <img src="<?= Yii::getAlias('@web').'/images/app-logo.png' ?>" style="width:80%; max-height:64px; object-fit:scale-down">
                 <!-- <span class="logo-lg-text-dark">Uplon</span> -->
             </span>
         </a>

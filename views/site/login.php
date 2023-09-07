@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-body" style="padding: unset">
                 <div class="row">
                     <div class="col-md-5" style="padding: 2rem">
-                        <img src="<?= Yii::getAlias('@web').'/images/LOGO.png' ?>" style="width:100%; object-fit:scale-down">
+                        <img src="<?= Yii::getAlias('@web').'/images/app-logo.png' ?>" style="width:100%; object-fit:scale-down">
                         <div class="text-center mb-5">
                             <h4 class="">Aplikasi Market Crypto</h4>
                         </div>
