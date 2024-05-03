@@ -13,9 +13,25 @@ use yii\web\View;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
-<div class="row mb-4 justify-content-center">
+<style>
+    .box-center {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        height: 80vh;
+        width: 80vw;
+        margin:auto;
+    }
+    a.dropdown-item, a.dropdown-item *:hover {
+        cursor: pointer;
+        background-color: transparent !important;
+    }
+</style>
+
+<div class="row mb-4 justify-content-center box-center">
     <div class="col-8" style="">
         <?php $form = ActiveForm::begin([
             'id' => 'login-form',
@@ -34,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card mb-0" style="box-shadow: 0px 0px 35px 35px rgba(73,80,87,.15) !important">
             <div class="card-body" style="padding: unset">
                 <div class="row">
-                    <div class="col-md-5" style="padding: 2rem">
+                    <div class="col-md-6" style="padding: 2rem">
                         <div class="logo logo-dark" >
                             <img src="<?= Yii::getAlias('@web').'/images/app-logo.png' ?>" style="width:100%; object-fit:scale-down">
                         </div>
@@ -50,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-7 bg-light" style="padding: 2rem;">
+                    <div class="col-md-6 bg-light" style="padding: 2rem;">
                         <h3>Account Login</h3>
                         <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
@@ -85,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
         }
         ?>
         <div class="row mt-2">
-            <a href="<?= Url::to(['site/toggle-dark-mode', 'flag' => $flag]) ?>" class="dropdown-item notify-item text-center">
+            <a href="<?= Url::to(['site/toggle-dark-mode', 'flag' => $flag]) ?>" class="dropdown-item notify-item text-center" style="width:fit-content; margin: auto; padding: .5rem 0;">
                 <div class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input theme-choice"
                            id="dark-mode-switch" <?= $checked ?>>

@@ -16,7 +16,31 @@ $this->title = 'Register';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="row justify-content-center">
+<style>
+    .box-center {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        height: 80vh;
+        width: 80vw;
+        margin:auto;
+    }
+    a.dropdown-item, a.dropdown-item *:hover {
+        cursor: pointer;
+        background-color: transparent !important;
+    }
+    a[data-index]:not(.disabled) {
+        box-shadow: 0px 0px 4px #f1b53d;
+    }
+
+    .box-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+    }
+</style>
+
+<div class="row justify-content-center box-center">
     <?php $form = ActiveForm::begin([
         'id' => 'register-form',
         'layout' => 'horizontal',
@@ -34,19 +58,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="card">
         <div class="card-body">
-
-            <div class="col-12 p-4">
+            <div class="col-12" style="padding: 0 1rem 0 1rem;">
                 <div class="row text-center">
                     <a href="#" class="col logo logo-dark">
-                        <img src="<?= Yii::getAlias('@web').'/images/app-logo.png' ?>" style="width:70%; max-height:70px; object-fit:scale-down">
+                        <img src="<?= Yii::getAlias('@web').'/images/app-logo.png' ?>" style="width:100%; object-fit:scale-down; max-height: 120px;">
                     </a>
                     <a href="#" class="col logo logo-light">
-                        <img src="<?= Yii::getAlias('@web').'/images/app-logo-dark.png' ?>" style="width:70%; max-height:70px; object-fit:scale-down">
+                        <img src="<?= Yii::getAlias('@web').'/images/app-logo-dark.png' ?>" style="width:100%; object-fit:scale-down; max-height: 120px;">
                     </a>
                 </div>
             </div>
             <div class="col-md-12 text-center">
-                <h4 class="header-title mb-5">Registrasi Member</h4>
+                <h3 class="mb-5">Account Registration</h3>
                 <div class="row">
                     <?php /*
                     <div class="col">
@@ -57,26 +80,26 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p class="text-center">Referral</p>
                     </div>
                     */ ?>
-                    <div class="col">
-                        <a id="t-1" data-index="1" class="btn btn-primary btn-action btn-rounded disabled mx-auto mb-2" href="#h-1"
+                    <div class="col box-bottom">
+                        <a id="t-1" data-index="0" class="btn btn-primary btn-action btn-rounded mx-auto mb-2" href="#h-1"
                            style="border-radius: 100% !important; height: 48px; width: 48px; display: flex; position: relative">
                             <span class="icon-key" style="font-size: 1rem; position: absolute; top: 29%; left: 33%"></span>
                         </a>
-                        <p class="text-center">Account</p>
+                        <span class="text-center">Account</span>
                     </div>
-                    <div class="col">
-                        <a id="t-2" data-index="2" class="btn btn-primary btn-action btn-rounded disabled mx-auto mb-2" href="#h-2"
+                    <div class="col box-bottom">
+                        <a id="t-2" data-index="1" class="btn btn-primary btn-action btn-rounded disabled mx-auto mb-2" href="#h-2"
                            style="border-radius: 100% !important; height: 48px; width: 48px; display: flex; position: relative">
                             <span class="icon-user" style="font-size: 1rem; position: absolute; top: 29%; left: 33%"></span>
                         </a>
-                        <p class="text-center">Profile</p>
+                        <span class="text-center">Profile</span>
                     </div>
-                    <div class="col">
-                        <a id="t-3" data-index="3" class="btn btn-primary btn-action btn-rounded disabled mx-auto mb-2" href="#h-3"
+                    <div class="col box-bottom">
+                        <a id="t-3" data-index="2" class="btn btn-primary btn-action btn-rounded disabled mx-auto mb-2" href="#h-3"
                            style="border-radius: 100% !important; height: 48px; width: 48px; display: flex; position: relative">
                             <span class="icon-wallet" style="font-size: 1rem; position: absolute; top: 29%; left: 33%"></span>
                         </a>
-                        <p class="text-center">Wallet</p>
+                        <span class="text-center">Wallet</span>
                     </div>
                 </div>
             </div>
@@ -181,12 +204,12 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <?php ActiveForm::end(); ?>
-    </div>
+</div>
 
-    <div class="row">
-        <div class="col-12 text-center">
-        <p class="">Have an account? <a href="<?= \yii\helpers\Url::to(['/site/login']) ?>" class="text-purple ml-1"><b>Login</b></a></p>
-    </div>
+<div class="row">
+    <div class="col-12 text-center">
+    <p class="">Have an account? <a href="<?= \yii\helpers\Url::to(['/site/login']) ?>" class="text-purple ml-1"><b>Login</b></a></p>
+</div>
 
 
         <?php
